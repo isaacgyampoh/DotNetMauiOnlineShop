@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:DotNetMauiOnlineShop.ViewModels"
+             x:Class="DotNetMauiOnlineShop.Views.CheckoutPage"
+             Title="Checkout">
+
+    <VerticalStackLayout Padding="20" Spacing="15">
+        <Label Text="Shipping Information" FontSize="20" FontAttributes="Bold" />
+        
+        <Entry Placeholder="Full Name" />
+        <Entry Placeholder="Address" />
+        <Entry Placeholder="City" />
+        <Entry Placeholder="Zip Code" Keyboard="Numeric" />
+        
+        <Button Text="Confirm Order" Command="{Binding PlaceOrderCommand}" Margin="0,20,0,0" />
+    </VerticalStackLayout>
+</ContentPage>

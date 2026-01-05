@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:DotNetMauiOnlineShop.ViewModels"
+             xmlns:model="clr-namespace:DotNetMauiOnlineShop.Models"
+             x:Class="DotNetMauiOnlineShop.Views.OrderTrackingPage"
+             Title="My Orders">
+
+    <CollectionView ItemsSource="{Binding Orders}" SelectionMode="None">
+        <CollectionView.EmptyView>
+            <Label Text="No orders found" HorizontalOptions="Center" VerticalOptions="Center" />
+        </CollectionView.EmptyView>
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="model:Order">
+                <Frame Margin="10" Padding="10" CornerRadius="5" HasShadow="True">
+                    <Grid RowDefinitions="Auto, Auto, Auto" ColumnDefinitions="*, Auto">
+                        <Label Grid.Row="0" Grid.Column="0" Text="{Binding Id, StringFormat='Order #{0}'}" FontAttributes="Bold" />
+                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Status}" TextColor="Blue" />
+                        <Label Grid.Row="1" Grid.Column="0" Text="{Binding OrderDate, StringFormat='{0:MMM dd, yyyy}'}" TextColor="Gray" />
+                        <Label Grid.Row="2" Grid.Column="0" Text="{Binding TotalAmount, StringFormat='Total: {0:C}'}" FontAttributes="Bold" />
+                    </Grid>
+                </Frame>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentPage>

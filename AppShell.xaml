@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="DotNetMauiOnlineShop.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:DotNetMauiOnlineShop"
+    Shell.FlyoutBehavior="Disabled">
+
+    <TabBar>
+        <Tab Title="Products" Icon="icon_about.png">
+            <ShellContent ContentTemplate="{DataTemplate local:Views.ProductsPage}" Route="ProductsPage" />
+        </Tab>
+        <Tab Title="Cart" Icon="icon_feed.png">
+            <ShellContent ContentTemplate="{DataTemplate local:Views.CartPage}" Route="CartPage" />
+        </Tab>
+        <Tab Title="Orders" Icon="icon_about.png">
+            <ShellContent ContentTemplate="{DataTemplate local:Views.OrderTrackingPage}" Route="OrderTrackingPage" />
+        </Tab>
+    </TabBar>
+
+</Shell>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:DotNetMauiOnlineShop.ViewModels"
+             xmlns:model="clr-namespace:DotNetMauiOnlineShop.Models"
+             x:Class="DotNetMauiOnlineShop.Views.ProductsPage"
+             Title="Products">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Cart" Command="{Binding GoToCartCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <Grid RowDefinitions="*, Auto">
+        <CollectionView Grid.Row="0" ItemsSource="{Binding Products}" SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Product">
+                    <Frame Margin="10" Padding="0" CornerRadius="10" HasShadow="True">
+                        <Grid RowDefinitions="150, Auto, Auto, Auto" Padding="10">
+                            <Image Grid.Row="0" Source="{Binding ImageUrl}" Aspect="AspectFit" HeightRequest="150" />
+                            <Label Grid.Row="1" Text="{Binding Name}" FontAttributes="Bold" FontSize="18" />
+                            <Label Grid.Row="2" Text="{Binding Price, StringFormat='{0:C}'}" TextColor="Green" FontSize="16" />
+                            <Button Grid.Row="3" Text="Add to Cart" 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ProductsViewModel}}, Path=AddToCartCommand}"
+                                    CommandParameter="{Binding .}"
+                                    Margin="0,10,0,0" />
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <ActivityIndicator Grid.Row="0" IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" 
+                           HorizontalOptions="Center" VerticalOptions="Center" Color="Blue" />
+    </Grid>
+</ContentPage>
